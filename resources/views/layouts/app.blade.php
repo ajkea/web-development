@@ -72,7 +72,11 @@
         </nav>
 
         <main class="py-4">
+            @include('layouts.header')
+
             @yield('content')
+
+            @include('layouts.footer')
         </main>
     </div>
 </body>

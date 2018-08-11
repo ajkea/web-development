@@ -13,11 +13,17 @@
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome')
+        ->name('index');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/faq', function () {
+    return view('static.faq');
+});
 
 Route::resource('/auctions', 'AuctionController');
+Route::get('/myauctions', 'AuctionController@myAuctions')
+    ->name('myauctions');

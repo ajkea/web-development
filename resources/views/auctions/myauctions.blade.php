@@ -2,5 +2,6 @@
 @section('content')
     <div class="container">
         <h1>My auctions</h1>
+
     </div>
 @endsection

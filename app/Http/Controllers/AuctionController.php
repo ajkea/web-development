@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Auction;
 use App\Media;
+use Auth;
 
 class AuctionController extends Controller
 {
@@ -21,7 +22,18 @@ class AuctionController extends Controller
      */
     public function index()
     {
-        return view('auctions.index');
+        return view(
+            'auctions.index',
+            ['auctions' => $this->auction->all(),]
+        );
+    }
+
+    public function myAuctions()
+    {
+        return view(
+            'auctions.myauctions',
+            ['auctions' => $this->auction->where('user_id', Auth::user()->id)]
+        );
     }
 
     /**

@@ -1,0 +1,276 @@
+@import 'header','fonts','form', 'footer';
+
+body{
+  background-color: #ffffff;
+}
+
+.hero-image{
+  img{
+    max-width: 100%;
+    max-height: 900px;
+    position: relative;
+  }
+  .mySlides{
+    margin-top: -12px;
+  }
+  .hero-tekst{
+    position: absolute;
+    background-color: rgba($color: #0120a6, $alpha: .8);
+    padding: 36px 50px;
+    bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    p{
+    color: white;
+    text-align: left;
+    font-size: 15px;
+    }
+  }
+
+.hero-image.pages{
+  top: 0px;
+  position: absolute;
+  img{
+    max-width: 1500px;
+    height: 536;
+  }
+  .heroauction{
+    position: absolute;
+    background-color: rgba($color: #0120a6, $alpha: .8);
+    padding: 36px 50px;
+    bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+  }
+}
+
+  #circle{
+    position: absolute;
+    left: -12px;
+    top: -12px;
+    width: initial;
+  }
+}
+
+.bold{
+  font-weight: bold;
+}
+
+#search::placeholder {
+  color: #1d1d1b;
+  // font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-style: italic;
+}
+#search{
+  background-color: #ffffff;
+  border: 1px solid #bebebd;
+  border-radius: 5px;
+  padding-left: 22px;
+  height: 30px;
+}
+
+.caroussel{
+  .button{
+    width: 40px;
+    height: 70px;
+    background-color: #1d1d1b;
+    opacity: .2;
+    position: absolute;
+    top: 50%;
+  }
+}
+
+.cl-inline{
+  clear: both;
+}
+
+.fl-right{
+  float: right;
+}
+
+.fl-left{
+  float: left;
+}
+
+img{
+  width: 100%;
+  object-fit: cover;
+}
+
+.icon{
+  width: initial;
+}
+
+.inline{
+  display: flex;
+}
+
+.original{
+  img{
+  width: initial;
+  }
+}
+
+.spotlight{
+  background: #f3f3f3;
+  padding-bottom: 100px;
+  padding-top: 50px;
+  img{
+    height: 170px;
+    margin: 2px;
+  }
+  .extra{
+    img{
+      height: 350px;
+    }
+  }
+}
+
+.carousel{
+  button{
+    top: 50%;
+    position: absolute;
+    height: 70px;
+    width: 40px;
+    background: rgba(0,0,0,.2);
+    border: none;
+    color: white;
+    font-size: 50px;
+
+  }
+  .button-left{
+    left: 0;
+  }
+  .button-right{
+    right: 0;
+  }
+
+}
+
+.artist{
+  position: relative;
+  img{
+    height: 820px;
+    opacity: 0.4;
+  }
+  .info{
+    position: absolute;
+    bottom: 50px;
+    margin: 50px 50px 0 50px;
+    p{
+      margin-top: 0;
+    }
+    h1{
+      margin-bottom: 0px;
+      font-size: 35px;
+      margin-left: -15px;
+    }
+  }
+}
+
+.auction-small{
+  height: 380;
+  padding-bottom: 20px;
+  img{
+    height: 250px;
+  }
+  p,a{
+    margin-left: 20px;
+  }
+  p.det-descr{
+    font-size: 15px;
+    color: #0a1e75;
+    line-height: 0;
+  }
+  p.name{
+    font-size: 20px;
+    line-height: 0;
+    font-weight: bold;
+  }
+  p.price{
+    font-size: 18px;
+    line-height: 12px;
+  }
+  p.countdown{
+    font-size: 14px;
+    color: #545353;
+  }
+  .button{
+    width: 120px;
+    font-size: 12px;
+    color: #0a1e75;
+    background: #f5f5f5;
+    border: 1px solid #e5e5e5;
+    margin-left: 10px;
+  }
+
+}
+
+.filter{
+  display: none;  
+  ul{
+    li{
+      list-style-type: none;
+      margin-left: -30px;
+    }
+  }
+}
+
+.intro-image{
+  img{
+    height: 430px;
+  }
+}
+
+.blue-box{
+  position: absolute;
+  bottom: 8px;
+  top: 220px;
+  width: 315px;
+  height: 330px;
+  background-color: rgba(1,32,166,.65);
+}
+
+.blue-box{
+  line-height: 22px;
+  h2{
+    color: white;
+    margin: 30px;
+    font-weight: lighter;
+  }
+  p{
+  color: white;
+  font-size: 15px;
+  margin: 30px;
+  }
+  .price{
+    font-size: 18px;
+    margin: 30px;
+  }
+  button{
+    font-size: 20px;
+    color: #01a6a0;
+    background: white;
+    border: 0;
+    height: 80px;
+    bottom: 0;
+    text-align: left;
+  }
+  .wide{
+    width: 100%;
+  }
+}
+
+//code voor styleguide
+.code{
+  background: #545353;
+  color: white;
+  border: 3px solid gray;
+  width: 100%;
+  padding: 20px;
+}
