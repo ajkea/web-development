@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Bid;
 use Illuminate\Http\Request;
 
 class BidController extends Controller
 {
+    public function __construct(Bid $bid){
+        $this->bid = $bid;
+    }
+
     /**
      * Display a listing of the resource.
      *

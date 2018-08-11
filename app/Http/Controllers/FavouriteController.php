@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Favourite;
 use Illuminate\Http\Request;
 
 class FavouriteController extends Controller
 {
+    public function __construct(Favourite $favourite){
+        $this->favourite = $favourite;
+    }
+
     /**
      * Display a listing of the resource.
      *

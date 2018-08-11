@@ -4,8 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Auction;
+use App\Media;
+
 class AuctionController extends Controller
 {
+    public function __construct(Auction $auction, Media $media){
+        $this->auction = $auction;
+        $this->media = $media;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +21,7 @@ class AuctionController extends Controller
      */
     public function index()
     {
-        //
+        return view('auctions.index');
     }
 
     /**

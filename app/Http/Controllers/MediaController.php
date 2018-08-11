@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class MediaController extends Controller
 {
+    public function __construct(Media $media){
+        $this->media = $media;
+    }
+
     /**
      * Display a listing of the resource.
      *
