@@ -1,10 +1,9 @@
 @extends ('layouts.app')
 @section('content')
-    <div class="container">
         <div class="intro-image">
             <img src="{{ URL::to('/') }}/images/static/hero1.png" alt="hero picture 1">
             <div class="container">
-                <div class="blue-box col-6 offset-6">
+                <div class="blue-box col-5 offset-7">
                     <h2>Lorem Ipsum</h2>
                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. magnis dis parturient montes, nascetur ridiculus mus...</p>
                     <p class="price">Price: € 299.99</p>
@@ -55,5 +54,4 @@
                 <div class="col-11">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident</div>
             </div>
         </div>
-    </div>
 @endsection

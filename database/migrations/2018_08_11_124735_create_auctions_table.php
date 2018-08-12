@@ -17,6 +17,7 @@ class CreateAuctionsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('style');
+            $table->integer('year');
             $table->integer('width');
             $table->integer('height');
             $table->integer('depth')

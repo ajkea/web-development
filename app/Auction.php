@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Auction extends Model
 {
     protected $fillable = [
-        'name', 'style', 'width', 'height', 'depth', 'description', 'condition', 'origin', 'min_price', 'max_price', 'buy)now', 'end_date', 'user_id',
+        'name', 'style', 'year', 'width', 'height', 'depth', 'description', 'condition', 'origin', 'min_price', 'max_price', 'buy_now', 'end_date', 'user_id',
     ];
 
     public function media()

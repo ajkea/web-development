@@ -2567,12 +2567,12 @@ html {
   }
 }
 
-nav .green-bar {
+.green-bar {
   height: 4px;
   background-color: #01a6a0;
 }
 
-nav .green-bar .logo {
+.green-bar .logo {
   padding: 0 15px 10px 15px;
   background: white;
   width: 75px;
@@ -2582,65 +2582,65 @@ nav .green-bar .logo {
   position: absolute;
 }
 
-nav .nav-up {
+.nav-up {
   height: 50px;
   background-color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 13px;
 }
 
-nav .nav-up .icon {
+.nav-up .icon {
   width: 15px;
   margin-right: 10px;
 }
 
-nav .nav-up .icon.search {
+.nav-up .icon.search {
   margin-right: 0px;
 }
 
-nav .nav-up a {
+.nav-up a {
   color: #0a1e75;
 }
 
-nav .nav-up .row {
+.nav-up .row {
   padding-top: 8px;
 }
 
-nav .nav-down {
+.nav-down {
   height: 50px;
   background-color: #eaeaea;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
 }
 
-nav .nav-down a {
+.nav-down a {
   color: #4e4e4e;
   margin-right: 10px;
 }
 
-nav .nav-down .language a {
+.nav-down .language a {
   color: #0a1e75;
 }
 
-nav .nav-down .row {
+.nav-down .row {
   padding-top: 8px;
 }
 
-nav ul {
+ul {
   margin-top: 0;
 }
 
-nav ul li {
+ul li {
   display: inline;
   list-style-type: none;
   margin-left: 8px;
 }
 
-nav ul li a {
+ul li a {
   text-decoration: none;
 }
 
-nav ul li img {
+ul li img {
   width: 10px;
 }
 
@@ -2723,13 +2723,15 @@ form textarea {
 }
 
 .green-bar .logo {
-  width: 200px;
-  bottom: 0;
   position: fixed;
   padding: 10px 15px 0 15px;
   background: #ffffff;
   -webkit-box-shadow: 1px 1px 24px 10px rgba(0, 0, 0, 0.3);
           box-shadow: 1px 1px 24px 10px rgba(0, 0, 0, 0.3);
+}
+
+.green-bar .logo.footer {
+  bottom: 0;
 }
 
 .footer-nav {

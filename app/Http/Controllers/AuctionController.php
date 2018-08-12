@@ -43,7 +43,9 @@ class AuctionController extends Controller
      */
     public function create()
     {
-        //
+        return view(
+            'auctions.create'
+        );
     }
 
     /**
@@ -54,7 +56,25 @@ class AuctionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $post = $this->auction->create([
+                'user_id' =>  Auth::user()->id,
+                'name' =>  $request->name,
+                'style' =>  $request->style,
+                'year' => $request->year,
+                'width' =>  $request->width,
+                'height' =>  $request->height,
+                'depth' =>  $request->depth,
+                'description' =>  $request->description,
+                'condition' =>  $request->condition,
+                'origin' =>  $request->origin,
+                'min_price' =>  $request->min_price,
+                'max_price' =>  $request->max_price,
+                'buy_now' =>  $request->buy_now,
+                'end_date' =>  $request->end_date,
+            ]);
+
+
+        return back();
     }
 
     /**

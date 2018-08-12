@@ -110,7 +110,7 @@
     </div>
     <div class="green-bar">
         <div class="container">
-            <img class="logo" src="{{ URL::to('/') }}/images/static/logo.png" alt="Landoretti logo">
+            <img class="logo footer" src="{{ URL::to('/') }}/images/static/logo.png" alt="Landoretti logo">
         </div>
     </div>
 </footer>
