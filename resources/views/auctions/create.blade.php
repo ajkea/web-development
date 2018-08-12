@@ -90,13 +90,19 @@
                 </div>
                 <div class="row">
                     <div class="col-3">
-                        <button class="btn">UPLOAD IMAGE OF THE ARTWORK</button>
+                        <input type="file" name="media1">
+                        <input hidden name="media1_type" value="optional">
+                        {{--<button class="btn">UPLOAD IMAGE OF THE ARTWORK</button>--}}
                     </div>
                     <div class="col-3">
-                        <button class="btn">UPLOAD IMAGE OF THE SIGNATURE</button>
+                        <input type="file" name="media2">
+                        <input hidden name="media2_type" value="signature">
+                        {{--<button class="btn">UPLOAD IMAGE OF THE SIGNATURE</button>--}}
                     </div>
                     <div class="col-3">
-                        <button class="btn">OPTIONAL IMAGE</button>
+                        <input type="file" name="media3">
+                        <input hidden name="media3_type" value="auction">
+                        {{--<button class="btn">OPTIONAL IMAGE</button>--}}
                     </div>
                 </div>
                 <div class="row">

@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script defer src="https://pro.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-yBZ34R8uZDBb7pIwm+whKmsCiRDZXCW1vPPn/3Gz0xm4E95frfRNrOmAUfGbSGqN" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="app">

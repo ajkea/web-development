@@ -56,7 +56,7 @@ class AuctionController extends Controller
      */
     public function store(Request $request)
     {
-            $post = $this->auction->create([
+            $auction = $this->auction->create([
                 'user_id' =>  Auth::user()->id,
                 'name' =>  $request->name,
                 'style' =>  $request->style,
@@ -72,6 +72,16 @@ class AuctionController extends Controller
                 'buy_now' =>  $request->buy_now,
                 'end_date' =>  $request->end_date,
             ]);
+
+        if(isset($request->media1)) {
+                $this->uploadMedia($request->media1, $request->name, $request->media1_type, $auction->id);
+        }
+        if(isset($request->media2)) {
+            $this->uploadMedia($request->media2, $request->name, $request->media2_type, $auction->id);
+        }
+        if(isset($request->media3)) {
+            $this->uploadMedia($request->media3, $request->name, $request->media3_type, $auction->id);
+        }
 
 
         return back();
@@ -120,5 +130,30 @@ class AuctionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function uploadMedia($media, $name, $type, $auction_id )
+    {
+        $FKmediaID = new Media();
+        $extension = $media->getClientOriginalExtension();
+        $filename = 'auction-'.$auction_id.'-'.str_replace(' ', '-', $name).'-'.$type.'-'.time().'.'.$extension;
+        $altDescription = 'Picture from auction with name: '.$name;
+        $media->move('images/upload/', $filename);
+        $media->source = $filename;
+        $media = $this->media->create([
+            'name' => $name,
+            'source' => $filename,
+            'alt' => $altDescription,
+            'type' => $type,
+            'auction_id' => $auction_id]);
+    }
+
+    public function deleteImage($mediaID)
+    {
+        $imageFile = $this->media->find($mediaID);
+        $imagePath = "images/upload/" . $imageFile->source;
+        File::delete($imagePath);
+        $this->media->destroy($mediaID);
+        return back();
     }
 }

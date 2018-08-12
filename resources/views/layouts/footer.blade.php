@@ -74,7 +74,7 @@
                 <p>Straatnaam xxx</p>
                 <p>xxxx, Oostende</p>
 
-                <span class="inline"><img class="icon" src="img/iconTelefoon.png" alt="icon telefoon"><p> +xx (0)x xxx xx xx</p></span>
+                <span class="inline"><i class="fal fa-user"></i></i><p> +xx (0)x xxx xx xx</p></span>
                 <span><img class="icon" src="img/iconMail.png" alt="icon mail"><p> info@landorettiart.com</p></span>
                 <img class="social" src="img/iconsSocial.png" alt="social media icons">
             </div>
