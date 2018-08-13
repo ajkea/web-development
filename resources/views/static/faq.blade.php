@@ -19,39 +19,19 @@
                 <h1>Find what you're looking for?</h1>
             </div>
             <div class="row faq-questions">
-                <div class="col-3 faq-question">
-                    <a href="#">How to bid?</a>
-                    <a href="#">How to sell?</a>
+                @foreach($questions as $question)
+                <div class="col-6 faq-question">
+                    <a href="#question{{ $question->id }}">{{ $question->question }}</a>
                 </div>
-                <div class="col-3 faq-question">
-                    <a href="#">How to buy?</a>
-                    <a href="#">How to register?</a>
-                </div>
-                <div class="col-3 faq-question">
-                    <a href="#">How to ask a question?</a>
-                    <a href="#">What is a watchlist?</a>
-                </div>
-                <div class="col-3 faq-question">
-                    <a href="#">How to use a watchlist?</a>
-                </div>
+                @endforeach
             </div>
-            <div class="row faq-answer">
+            @foreach($questions as $question)
+            <div id="question{{$question->id}}" class="row faq-answer">
                 <div class="col-mini">Q</div>
-                <div class="col-11">How to bid?</div>
+                <div class="col-11">{{ $question->question }}</div>
                 <div class="col-mini">A</div>
-                <div class="col-11">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident</div>
+                <div class="col-11">{{ $question->answer }}</div>
             </div>
-            <div class="row faq-answer">
-                <div class="col-mini">Q</div>
-                <div class="col-11">How to bid?</div>
-                <div class="col-mini">A</div>
-                <div class="col-11">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident</div>
-            </div>
-            <div class="row faq-answer">
-                <div class="col-mini">Q</div>
-                <div class="col-11">How to bid?</div>
-                <div class="col-mini">A</div>
-                <div class="col-11">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident</div>
-            </div>
+            @endforeach
         </div>
 @endsection

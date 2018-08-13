@@ -74,7 +74,9 @@ class AuctionController extends Controller
             ]);
 
         if(isset($request->media1)) {
-                $this->uploadMedia($request->media1, $request->name, $request->media1_type, $auction->id);
+            foreach ($request->file('media1') as $key => $value) {
+                $this->uploadMedia($value, $request->name . $key, $request->media1_type, $auction->id);
+            }
         }
         if(isset($request->media2)) {
             $this->uploadMedia($request->media2, $request->name, $request->media2_type, $auction->id);
@@ -95,7 +97,10 @@ class AuctionController extends Controller
      */
     public function show($id)
     {
-        //
+        return view(
+            'auctions.show',
+            ['auction' => $this->auction->find($id)]
+        );
     }
 
     /**

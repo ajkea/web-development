@@ -75,8 +75,8 @@
                 <p>xxxx, Oostende</p>
 
                 <span class="inline"><i class="fal fa-user"></i></i><p> +xx (0)x xxx xx xx</p></span>
-                <span><img class="icon" src="img/iconMail.png" alt="icon mail"><p> info@landorettiart.com</p></span>
-                <img class="social" src="img/iconsSocial.png" alt="social media icons">
+                <span><i class="fal fa-envelope"></i><p> info@landorettiart.com</p></span>
+                <i class="fab fa-facebook"></i>
             </div>
         </div>
         <div class="row right">
@@ -90,11 +90,11 @@
                 <div class="col-8">
                     <ul class="nav">
                         <li class="bold"><a href="{{ route('home') }}">HOME</a></li>
-                        <li class="bold"><a href="auctions.html">ART</a></li>
+                        <li class="bold"><a href="{{ route('auctions.index') }}">ART</a></li>
                         <li class="bold"><a href="search.html">ISEARCH</a></li>
-                        <li class="bold"><a href="myauctions.html">MYAUCTIONS</a></li>
+                        <li class="bold"><a href="{{ route('myauctions') }}">MYAUCTIONS</a></li>
                         <li class="bold"><a href="myauctions.html">MYBIDS</a></li>
-                        <li class="bold"><a href="faq.html">CONTACT</a></li>
+                        <li class="bold"><a href="{{ url('faq') }}">CONTACT</a></li>
                     </ul>
                 </div>
                 <div class="fl-right">

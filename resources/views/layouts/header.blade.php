@@ -10,15 +10,15 @@
                 <div class="col-1"></div>
                 <div class="col-7">
                     <ul class="nav">
-                        <li><img class="icon" src="img/iconMenu.png" alt="icon list"> <a href="watchlist.html">WATCHLIST</a></li>
+                        <li><i class="fal fa-bars"></i> WATCHLIST</a></li>
                         <li> | </li>
-                        <li><img class="icon" src="img/iconUser.png" alt="icon profile"> <a href="profile.html">PROFILE</a></li>
+                        <li><i class="fal fa-user-circle"></i> <a href="profile.html">PROFILE</a></li>
                         <li> | </li>
                         <li><a href="{{ route('login') }}">LOGIN</a></li>
                     </ul>
                 </div>
-                <div class="float-right">
-                    <input type="text" name="search" id="search" placeholder="Search"> <img class="icon search" src="img/iconSearchNav.png" alt="icon search">
+                <div class="fl-right">
+                    <input type="text" name="search" id="search" placeholder="Search"> <i class="fal fa-search"></i>
                 </div>
             </div>
         </div>

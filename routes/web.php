@@ -18,10 +18,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/faq', function () {
-    return view('static.faq');
-});
+Route::get('/home', 'HomeController@index')
+    ->name('home');
+Route::get('/faq', 'QuestionController@index')
+    ->name('faq');
 
 Route::resource('/auctions', 'AuctionController');
 Route::get('/myauctions', 'AuctionController@myAuctions')

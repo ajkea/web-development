@@ -90,7 +90,7 @@
                 </div>
                 <div class="row">
                     <div class="col-3">
-                        <input type="file" name="media1">
+                        <input type="file" name="media1[]" multiple>
                         <input hidden name="media1_type" value="optional">
                         {{--<button class="btn">UPLOAD IMAGE OF THE ARTWORK</button>--}}
                     </div>

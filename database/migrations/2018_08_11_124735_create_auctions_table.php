@@ -23,13 +23,13 @@ class CreateAuctionsTable extends Migration
             $table->integer('depth')
                 ->nullable();
             $table->longText('description');
-            $table->string('condition');
+            $table->longText('condition');
             $table->string('origin');
             $table->integer('min_price');
             $table->integer('max_price');
             $table->integer('buy_now')
                 ->nullable();
-            $table->date('end_date');
+            $table->string('end_date');
             $table->integer('user_id')
                 ->references('id')
                 ->on('users')

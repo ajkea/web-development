@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('country');
             $table->integer('zip_code');
             $table->string('city');
-            $table->integer('phone_number');
-            $table->integer('account_number');
-            $table->integer('vat_number');
+            $table->string('phone_number');
+            $table->bigInteger('account_number');
+            $table->bigInteger('vat_number');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
