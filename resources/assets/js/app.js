@@ -1,3 +1,5 @@
+import $ from 'jquery';
+window.$ = window.jQuery = $;
 
 /**
  * First we will load all of this project's JavaScript dependencies which

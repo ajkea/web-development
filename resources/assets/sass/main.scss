@@ -2,6 +2,7 @@
 
 body{
   background-color: #ffffff;
+  margin: 0;
 }
 
 .hero-image{
@@ -102,10 +103,6 @@ img{
   object-fit: cover;
 }
 
-.icon{
-  width: initial;
-}
-
 .inline{
   display: flex;
 }
@@ -191,6 +188,7 @@ img{
     font-size: 20px;
     line-height: 0;
     font-weight: bold;
+    display: inline;
   }
   p.price{
     font-size: 18px;

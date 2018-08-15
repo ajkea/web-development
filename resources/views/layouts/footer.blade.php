@@ -67,7 +67,7 @@
 
             <div class="col-3 col-12-sm contact">
                 <h3 class="bold">FIND WHAT YOU NEED.</h3>
-                <input type="search" name="search" id="" placeholder="Search"><img class="icon" src="img/iconSearch.png" alt="icon search">
+                <input type="search" name="search" id="" placeholder="Search"><i class="fal fa-search"></i>
 
                 <h3 class="bold">CONTACT</h3>
                 <p>Landoretti ART</p>

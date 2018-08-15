@@ -1,22 +1,17 @@
 @extends ('layouts.app')
 @section('content')
-    <div class="intro-image">
-        <img src="{{ URL::to('/') }}/images/static/hero1.png" alt="hero picture 1">
-        <div class="container">
-            <div class="blue-box col-5 offset-7">
-                <h2>Lorem Ipsum</h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. magnis dis parturient montes, nascetur ridiculus mus...</p>
-                <p class="price">Price: € 299.99</p>
-                <button class="wide">VISIT AUCTION  ></button>
-            </div>
-        </div>
-    </div>
+    @yield ('layouts.hero)
     <div class="container">
         <a href="#" class="breadcrumbs">
             Home > Jasper Poppe > My auctions > New Auction
         </a>
         <div class="row">
             <h1>Add a new auction</h1>
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            @endif
         </div>
         <div class="row">
             <form class="form" action="{{ route('auctions.index') }}" enctype="multipart/form-data" method="post" files="true">
@@ -43,43 +38,43 @@
                 <div class="row">
                     <div class="col-6">
                         <p class="title">Auction title</p>
-                        <input type="text" name="name" id="title" placeholder="Auction title">
+                        <input required type="text" name="name" id="title" placeholder="Auction title" value="{{ old('name') }}">
                     </div>
                     <div class="col-3">
                         <p class="title">Year</p>
-                        <input type="number" name="year" id="year" placeholder="X X X X">
+                        <input required type="number" name="year" id="year" placeholder="X X X X" value="{{ old('year') }}">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-3">
                         <p class="title">Width</p>
-                        <input type="number" name="width" id="width" placeholder="X X X X">
+                        <input required type="number" name="width" id="width" placeholder="X X X X" value="{{ old('width') }}">
                     </div>
                     <div class="col-3">
                         <p class="title">Height</p>
-                        <input type="number" name="height" id="Height" placeholder="X X X X">
+                        <input required type="number" name="height" id="Height" placeholder="X X X X" value="{{ old('height') }}">
                     </div>
                     <div class="col-3">
                         <div class="inline"><p class="title">Depth </p><p class="note">(optional)</p></div>
-                        <input type="number" name="depth" id="Depth" placeholder="X X X X">
+                        <input type="number" name="depth" id="Depth" placeholder="X X X X" value="{{ old('depth') }}">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-9">
                         <p class="title">Description</p>
-                        <textarea name="description" id="description" rows="4"></textarea>
+                        <textarea required name="description" id="description" rows="4" value="{{ old('description') }}"></textarea>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-9">
                         <p class="title">Condition</p>
-                        <textarea name="condition" id="condition" rows="4"></textarea>
+                        <textarea required name="condition" id="condition" rows="4" value="{{ old('condition') }}"></textarea>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-9">
                         <p class="title">Origin</p>
-                        <input type="text" name="origin" id="origin">
+                        <input required type="text" name="origin" id="origin" value="{{ old('origin') }}">
                     </div>
                 </div>
                 <div class="row">
@@ -90,40 +85,37 @@
                 </div>
                 <div class="row">
                     <div class="col-3">
-                        <input type="file" name="media1[]" multiple>
-                        <input hidden name="media1_type" value="optional">
-                        {{--<button class="btn">UPLOAD IMAGE OF THE ARTWORK</button>--}}
+                        <input required type="file" name="media1[]" multiple value="{{ old('media1[]') }}">
+                        <input required hidden name="media1_type" value="auction">
                     </div>
                     <div class="col-3">
-                        <input type="file" name="media2">
-                        <input hidden name="media2_type" value="signature">
-                        {{--<button class="btn">UPLOAD IMAGE OF THE SIGNATURE</button>--}}
+                        <input required type="file" name="media2" value="{{ old('media2') }}">
+                        <input required hidden name="media2_type" value="signature">
                     </div>
                     <div class="col-3">
                         <input type="file" name="media3">
-                        <input hidden name="media3_type" value="auction">
-                        {{--<button class="btn">OPTIONAL IMAGE</button>--}}
+                        <input hidden name="media3_type" value="optional">
                     </div>
                 </div>
                 <div class="row">
                     <h2>Pricing</h2>
                     <div class="col-3">
                         <p class="title">Minimum estimate price</p>
-                        <input type="text" name="min_price" id="minprice" value="€" placeholder="X X X X">
+                        <input required type="text" name="min_price" id="minprice" value="{{ old('min_price') }}" placeholder="X X X X">
                     </div>
                     <div class="col-3">
                         <p class="title">Maximum estimate price</p>
-                        <input type="text" name="max_price" id="maxprice" value="€" placeholder="X X X X">
+                        <input required type="text" name="max_price" id="maxprice" value="{{ old('max_price') }}" placeholder="X X X X">
                     </div>
                     <div class="col-3">
                         <div class="inline"><p class="title">Buyout price </p><p class="note">(optional)</p></div>
-                        <input type="text" name="buy_now" id="buyoutprice" value="€" placeholder="X X X X">
+                        <input type="text" name="buy_now" id="buyoutprice" value="{{ old('buy_now') }}" placeholder="X X X X">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-3">
                         <p class="title">End date</p>
-                        <input type="text" name="end_date" id="endate" placeholder="DD/MM/YY" value="2002-11-22">
+                        <input required type="date" name="end_date" id="endate" value="{{ old('end_date') }}">
                     </div>
                     <div class="col-9">
                         <p class="title">Attention</p>
@@ -134,7 +126,7 @@
                 </div>
                 <div class="row">
                     <div class="col-3 inline">
-                        <input type="checkbox" name="terms" id="terms"><p>I Agree to <a href="#">The Terms & Conditions</a></p>
+                        <input required type="checkbox" name="terms" id="terms"><p>I Agree to <a href="#">The Terms & Conditions</a></p>
                     </div>
                 </div>
                 <div class="row center">

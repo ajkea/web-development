@@ -1,28 +1,18 @@
 @extends ('layouts.app')
 @section('content')
-    <div class="intro-image">
-        <img src="{{ URL::to('/') }}/images/static/hero1.png" alt="hero picture 1">
-        <div class="container">
-            <div class="blue-box col-5 offset-7">
-                <h2>Lorem Ipsum</h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. magnis dis parturient montes, nascetur ridiculus mus...</p>
-                <p class="price">Price: € 299.99</p>
-                <button class="wide">VISIT AUCTION  ></button>
-            </div>
-        </div>
-    </div>
+    @include ('layouts.hero')
     <div class="container">
         <div class="row">
             <a href="#" class="breadcrumbs">
                 Home > Auctions > Salvador Dali > Dance of Time III
             </a>
-            <p class="right">LOT ID: 34611</p>
+            <p class="right">LOT ID: {{ $auction->id }}</p>
             </span>
         </div>
         <div class="row">
             <h1>{{ $auction->name }}</h1>
             <p class="countdown">
-                25d 14u 44m (7 bids) <img class="icon" src="img/iconMenu.png" alt="icon menu">
+                25d 14u 44m (7 bids) <i class="fal fa-bars"></i>
             </p>
         </div>
         <div class="row">
@@ -34,7 +24,7 @@
                         <div class="col-12">
                             <img class="img-lg img-preview__large" src="{{ url('/images/upload/').'/'.$media->source }}" alt="{{ $media->alt }}">
                         </div>
-                        @elseif($loop->index < 3 && $media->type == 'optional')
+                        @elseif($loop->index < 4 && $media->type == 'auction')
                        <div class="col miniature">
                            <img class="img-preview__small" src="{{ url('/images/upload/').'/'.$media->source }}" alt="{{ $media->alt }}">
                        </div>
@@ -60,9 +50,17 @@
                     <p>Estimated price:</p>
                     <h2 class="price">€ {{ $auction->min_price }} - € {{ $auction->max_price }}</h2>
                     <a href="#" class="det-link"></a>
-                    <p class="light">bids: 7</p>
+                    <p class="light">
+                        bids:
+                        {{ count($auction->bids) }}
+                    </p>
                     <div class="det-bid">
-                        <input type="number" name="bid" id="bid"><h4 class="caps">BID NOW ></h4>
+                        <form class="form" action="{{ url('/createbid') }}" method="post">
+                            @csrf
+                            <input type="number" name="price" id="bid" min="{{ $price }}" value="{{ $price }}">
+                            <input hidden name="auction_id" value="{{ $auction->id }}">
+                            <button type="submit">BID NOW</button>
+                        </form>
                     </div>
                     <a href="#">
                         <i class="fal fa-bars"></i> add to my watchlist
@@ -93,48 +91,29 @@
                 <button class="btn btn-question">ASK A QUESTION ABOUT THIS AUCTION</button>
             </div>
         </div><!-- END ROW -->
+
+        <h2>Related</h2>
         <div class="row">
-            <h2>Related</h2>
-            <div class="col-3 auction-small">
-                <img src="img/details/related1.png" alt="picture of dance of time">
-                <p class="det-descr">1979, Salvador Dali</p>
-                <p class="rel name">{{ $auction->name }}</p>
-                <p class="rel price">€ 8.900</p>
-                <div class="inline">
-                    <p class="rel countdown">25d 14u 44m</p>
-                    <a href="#" class="right">VISIT AUCTION ></a>
-                </div>
-            </div>
-            <div class="col-3 auction-small">
-                <img src="img/details/related2.png" alt="picture of dance of time">
-                <p class="det-descr">1979, Salvador Dali</p>
-                <p class="rel name">{{ $auction->name }}</p>
-                <p class="rel price">€ 8.900</p>
-                <div class="inline">
-                    <p class="rel countdown">25d 14u 44m</p>
-                    <a href="#" class="right">VISIT AUCTION ></a>
-                </div>
-            </div>
-            <div class="col-3 auction-small">
-                <img src="img/details/related1.png" alt="picture of dance of time">
-                <p class="list description">1979, Salvador Dali</p>
-                <p class="list name">{{ $auction->name }}</p>
-                <p class="list price">€ 8.900</p>
-                <div class="inline">
-                    <p class="list countdown">25d 14u 44m</p>
-                    <a href="#" class="right">VISIT AUCTION ></a>
-                </div>
-            </div>
-            <div class="col-3 auction-small">
-                <img src="img/details/related1.png" alt="picture of dance of time">
-                <p class="list description">1979, Salvador Dali</p>
-                <p class="list name">{{ $auction->name }}</p>
-                <p class="list price">€ 8.900</p>
-                <div class="inline">
-                    <p class="list countdown">25d 14u 44m</p>
-                    <a href="#" class="right">VISIT AUCTION ></a>
-                </div>
-            </div>
+            @foreach($auctions as $auctionRelated)
+                @if($loop->index < 4)
+                    <div class="col-3 col-6-sm auction-small">
+                        @isset($auctionRelated->media)
+                            @foreach($auctionRelated->media as $media)
+                                @if($loop->index == 0)
+                                    <img src="{{ url('/images/upload/').'/'.$media->source }}" alt="{{ url('/images/upload/').'/'.$media->alt }}">
+                                @endif
+                            @endforeach
+                        @endisset
+                        <p class="det-descr">{{ $auctionRelated->year }}, {{ $auctionRelated->origin }}</p>
+                        <p class="rel name">{{ $auctionRelated->name }}</p>
+                        <p class="rel price">€ {{ $auctionRelated->min_price }}</p>
+                        <div class="inline">
+                            <p class="rel countdown">{{ $auctionRelated->end_date }}</p>
+                            <a class="right button" href="{{ url('/auctions/'.$auctionRelated->id) }}">VISIT AUCTION ></a>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
         </div>
     </div>
 @endsection

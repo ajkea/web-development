@@ -1,7 +1,7 @@
 <nav class="">
     <div class="green-bar">
         <div class="container">
-            <img class="logo" src="{{ URL::to('/') }}/images/static/logo.png" alt="Landoretti logo">
+            <img class="logo top" src="{{ URL::to('/') }}/images/static/logo.png" alt="Landoretti logo">
         </div>
     </div>
     <div class="nav-up">
@@ -10,10 +10,10 @@
                 <div class="col-1"></div>
                 <div class="col-7">
                     <ul class="nav">
-                        <li><i class="fal fa-bars"></i> WATCHLIST</a></li>
-                        <li> | </li>
-                        <li><i class="fal fa-user-circle"></i> <a href="profile.html">PROFILE</a></li>
                         @auth
+                            <li><i class="fal fa-bars"></i> WATCHLIST</a></li>
+                            <li> | </li>
+                            <li><i class="fal fa-user-circle"></i> <a href="{{ route('profile') }}">{{ Auth::user()->name }}</a></li>
                             <li> | </li>
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
