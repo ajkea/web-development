@@ -29,7 +29,7 @@ class CreateAuctionsTable extends Migration
             $table->integer('max_price');
             $table->integer('buy_now')
                 ->nullable();
-            $table->string('end_date');
+            $table->timestamp('end_date');
             $table->integer('user_id')
                 ->references('id')
                 ->on('users')

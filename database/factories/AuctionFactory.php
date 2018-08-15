@@ -17,6 +17,6 @@ $factory->define(App\Auction::class, function (Faker $faker) {
         'min_price' => $faker->randomNumber(4),
         'max_price' => $faker->randomNumber(5),
         'buy_now' => $faker->randomNumber(5),
-        'end_date' => $faker->randomNumber(),
+        'end_date' => $faker->dateTimeBetween('now', 1540857600),
     ];
 });

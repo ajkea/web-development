@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\StoreUser;
+
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
@@ -49,6 +51,17 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'name' => 'required|string|',
+            'email' => 'unique:users,email|required|email',
+            'country' => 'required|string|',
+            'zip_code' => 'required|integer|',
+            'city' => 'required|string|',
+            'address' => 'required|string',
+            'phone_number' => 'required|integer|',
+            'account_number' => 'required|integer|',
+            'vat_number' => 'required|integer|',
+            'password' => 'required|alpha_num|min:6',
+            'password_confirmation' => 'required|same:password',
         ]);
     }
 
@@ -67,6 +80,7 @@ class RegisterController extends Controller
             'country' => $data['country'],
             'zip_code' => $data['zip_code'],
             'city' => $data['city'],
+            'address' => $data['address'],
             'address' => $data['address'],
             'phone_number' => $data['phone_number'],
             'phone_number2' => $data['phone_number2'],

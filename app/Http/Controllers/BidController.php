@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Bid;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreBid;
+use Auth;
 
 class BidController extends Controller
 {
@@ -39,7 +41,15 @@ class BidController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        $validated = $request->validated();
+
+        $bid = $this->bid->create([
+            'user_id' =>  Auth::user()->id,
+            'auction_id' => $request->auction_id,
+            'price' => $request->price,
+        ]);
+
+        return back();
     }
 
     /**

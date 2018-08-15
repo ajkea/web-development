@@ -5,14 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Auction;
+use App\Http\Requests\StoreAuction;
 use App\Media;
+use App\Bid;
 use Auth;
+
 
 class AuctionController extends Controller
 {
-    public function __construct(Auction $auction, Media $media){
+    public function __construct(Auction $auction, Media $media, Bid $bid){
         $this->auction = $auction;
         $this->media = $media;
+        $this->bid = $bid;
     }
 
     /**
@@ -24,7 +28,9 @@ class AuctionController extends Controller
     {
         return view(
             'auctions.index',
-            ['auctions' => $this->auction->all(),]
+            ['auctions' => $this->auction
+                ->whereDate('end_date', '>', now())
+                ->get(),]
         );
     }
 
@@ -54,24 +60,26 @@ class AuctionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAuction $request)
     {
-            $auction = $this->auction->create([
-                'user_id' =>  Auth::user()->id,
-                'name' =>  $request->name,
-                'style' =>  $request->style,
-                'year' => $request->year,
-                'width' =>  $request->width,
-                'height' =>  $request->height,
-                'depth' =>  $request->depth,
-                'description' =>  $request->description,
-                'condition' =>  $request->condition,
-                'origin' =>  $request->origin,
-                'min_price' =>  $request->min_price,
-                'max_price' =>  $request->max_price,
-                'buy_now' =>  $request->buy_now,
-                'end_date' =>  $request->end_date,
-            ]);
+        $validated = $request->validated();
+
+        $auction = $this->auction->create([
+            'user_id' =>  Auth::user()->id,
+            'name' =>  $request->name,
+            'style' =>  $request->style,
+            'year' => $request->year,
+            'width' =>  $request->width,
+            'height' =>  $request->height,
+            'depth' =>  $request->depth,
+            'description' =>  $request->description,
+            'condition' =>  $request->condition,
+            'origin' =>  $request->origin,
+            'min_price' =>  $request->min_price,
+            'max_price' =>  $request->max_price,
+            'buy_now' =>  $request->buy_now,
+            'end_date' =>  $request->end_date,
+        ]);
 
         if(isset($request->media1)) {
             foreach ($request->file('media1') as $key => $value) {
@@ -86,7 +94,7 @@ class AuctionController extends Controller
         }
 
 
-        return back();
+        return back()->withInput();
     }
 
     /**
@@ -97,10 +105,23 @@ class AuctionController extends Controller
      */
     public function show($id)
     {
+        $auctionBids = $this->bid->where('auction_id', $id)->max('price');
+//        return $auctionBids;
+        if ($auctionBids == 0)
+        {
+            $price = $this->auction->find($id)->min_price;
+        }
+        else
+        {
+            $price = $auctionBids + 1;
+        }
+//        return $price;
         return view(
             'auctions.show',
-            ['auction' => $this->auction->find($id)]
-        );
+            ['auction' => $this->auction->find($id),
+            'auctions' => $this->auction->inRandomOrder()->get(),
+            'price' => $price
+            ]);
     }
 
     /**
@@ -160,5 +181,14 @@ class AuctionController extends Controller
         File::delete($imagePath);
         $this->media->destroy($mediaID);
         return back();
+    }
+
+    public function homepage()
+    {
+        return view(
+            'welcome',
+            ['auctions' => $this->auction->all(),]
+        );
+
     }
 }
