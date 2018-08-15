@@ -2579,6 +2579,9 @@ html {
   -webkit-box-shadow: 1px 1px 24px 10px rgba(0, 0, 0, 0.3);
           box-shadow: 1px 1px 24px 10px rgba(0, 0, 0, 0.3);
   z-index: 101;
+}
+
+.green-bar .logo.top {
   position: absolute;
 }
 
@@ -2587,15 +2590,6 @@ html {
   background-color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 13px;
-}
-
-.nav-up .icon {
-  width: 15px;
-  margin-right: 10px;
-}
-
-.nav-up .icon.search {
-  margin-right: 0px;
 }
 
 .nav-up a {
@@ -2664,6 +2658,10 @@ h1 {
 
 .faq-questions .faq-question a {
   display: block;
+}
+
+.text-center {
+  text-align: center;
 }
 
 form {
@@ -2804,6 +2802,7 @@ li a {
 
 body {
   background-color: #ffffff;
+  margin: 0;
 }
 
 .hero-image img {
@@ -2924,10 +2923,6 @@ img {
      object-fit: cover;
 }
 
-.icon {
-  width: initial;
-}
-
 .inline {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3021,6 +3016,7 @@ img {
   font-size: 20px;
   line-height: 0;
   font-weight: bold;
+  display: inline;
 }
 
 .auction-small p.price {
@@ -3109,11 +3105,13 @@ img {
 
 .img-preview__large {
   max-height: 400px;
-  overflow: hidden;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .img-preview__small {
   max-height: 200px;
-  overflow: hidden;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
