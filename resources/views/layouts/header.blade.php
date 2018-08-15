@@ -13,8 +13,21 @@
                         <li><i class="fal fa-bars"></i> WATCHLIST</a></li>
                         <li> | </li>
                         <li><i class="fal fa-user-circle"></i> <a href="profile.html">PROFILE</a></li>
-                        <li> | </li>
-                        <li><a href="{{ route('login') }}">LOGIN</a></li>
+                        @auth
+                            <li> | </li>
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit">Logout</button>
+                                </form>
+                            </li>
+                        @endauth
+                        @guest
+                            <li> | </li>
+                            <li><a href="{{ route('login') }}">LOGIN</a></li>
+                            <li> | </li>
+                            <li><a href="{{ route('register') }}">REGISTER</a></li>
+                        @endguest
                     </ul>
                 </div>
                 <div class="fl-right">
@@ -39,9 +52,9 @@
                 </div>
                 <div class="float-right">
                     <ul class="nav language">
-                        <li><a href="#">NL</a></li>
-                        <li><a href="#">FR</a></li>
-                        <li><a class="bold" href="#">EN</a></li>
+                        <li><a href="{{ url('register/nl') }}">NL</a></li>
+                        <li><a href="{{ url('register/en') }}">FR</a></li>
+                        <li><a class="bold" href="{{ url('register/en') }}">EN</a></li>
                     </ul>
                 </div>
             </div>

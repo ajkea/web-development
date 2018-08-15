@@ -71,11 +71,11 @@
 
                 <h3 class="bold">CONTACT</h3>
                 <p>Landoretti ART</p>
-                <p>Straatnaam xxx</p>
-                <p>xxxx, Oostende</p>
+                <p>Kerkstraat 41</p>
+                <p>8200, Oostende</p>
 
-                <span class="inline"><i class="fal fa-user"></i></i><p> +xx (0)x xxx xx xx</p></span>
-                <span><i class="fal fa-envelope"></i><p> info@landorettiart.com</p></span>
+                <span class="inline"><i class="fal fa-user"></i></i><p>+32 (0)2 987 23 62</p></span>
+                <span class="inline"><i class="fal fa-envelope"></i><p>info@landorettiart.com</p></span>
                 <i class="fab fa-facebook"></i>
             </div>
         </div>
