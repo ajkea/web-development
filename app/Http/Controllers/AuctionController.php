@@ -30,7 +30,7 @@ class AuctionController extends Controller
             'auctions.index',
             ['auctions' => $this->auction
                 ->whereDate('end_date', '>', now())
-                ->get(),]
+                ->paginate(9),]
         );
     }
 
@@ -190,5 +190,36 @@ class AuctionController extends Controller
             ['auctions' => $this->auction->all(),]
         );
 
+    }
+
+    public function watchlist()
+    {
+        return view(
+            'auctions.watchlist',
+            ['auctions' => $this->auction->all()]
+        );
+    }
+
+    public function search()
+    {
+        return view(
+            'static.search',
+            ['auctions' => $this->auction->all()]
+        );
+    }
+
+    public function searchAuction(Request $request)
+    {
+        $auctions = $this->auction
+            ->where('name', 'like', '%'.$request->name.'%')
+            ->where('origin', 'like', '%'.$request->artist.'%')
+            ->where('description', 'like', '%'.$request->description.'%')
+            ->get();
+        $search = $request->name.' - '.$request->artist;
+
+        return view(
+            'static.search',
+            ['auctions' => $auctions, 'search' => $search]
+        );
     }
 }

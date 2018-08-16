@@ -6,6 +6,7 @@ use App\Bid;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreBid;
 use Auth;
+use DB;
 
 class BidController extends Controller
 {
@@ -20,7 +21,19 @@ class BidController extends Controller
      */
     public function index()
     {
-        //
+        $bids = $this->bid
+            ->select('*' , DB::raw("max(price)"))
+            ->orderBy('price', 'desc')
+            ->where('user_id', Auth::user()->id)
+            ->groupBy('auction_id')
+            ->get();
+
+
+        return view(
+            'bids.index',
+            ['bids' => $bids,
+            ]
+        );
     }
 
     /**
