@@ -13,6 +13,8 @@ window.countdown = function (time) {
 
         let distance = end_date - now
 
+
+        if ((distance > 0)) {
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -20,5 +22,9 @@ window.countdown = function (time) {
 
         time[i].innerHTML = days + "d " + hours + "h "
             + minutes + "m " + seconds + "s ";
+        }
+        else {
+            time[i].innerHTML = "times up over now"
+        }
     }
 }

@@ -29,7 +29,7 @@ class AuctionController extends Controller
         return view(
             'auctions.index',
             ['auctions' => $this->auction
-                ->whereDate('end_date', '>', now())
+                ->whereDate('end_date', '>', date_add(now(), date_interval_create_from_date_string('-1 days')))
                 ->paginate(9),]
         );
     }
