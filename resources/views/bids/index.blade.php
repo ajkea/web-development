@@ -4,13 +4,26 @@
     <div class="container">
         <h1>Bids</h1>
         <div class="row">
-            @foreach($bids as $bid)
-                <div class="col-12">
-                    <p>{{ $bid->price }}</p>
-                    <p>{{ $bid->auction->name }}</p>
-                    <p>{{ $bid->user->name }}</p>
-                </div>
-            @endforeach
+            <table >
+                <thead>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Bid</th>
+                    <th>Auction ending in</th>
+                    <th>View auction</th>
+                </thead>
+                <tbody>
+                @foreach($bids as $bid)
+                    <tr>
+                        <td>{{ $loop->index + 1 }}</td>
+                        <td>{{ $bid->auction->name }}</td>
+                        <td>&euro; {{ $bid->maxBid }}</td>
+                        <td class="rel countdown" data-time="{{ $bid->auction->end_date }}">{{ $bid->auction->end_date }}</td>
+                        <td><a href="auctions/{{ $bid->auction->id }}">Go to auction</a></td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection

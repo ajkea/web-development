@@ -37,7 +37,8 @@ Route::get('myauctions', 'AuctionController@myAuctions')
     ->name('myauctions')
     ->middleware('auth');
 
-Route::resource('bids', 'BidController');
+Route::resource('bids', 'BidController')
+    ->middleware('auth');
 route::post('createbid', 'BidController@store')
     ->name('createbid)')
     ->middleware('auth');#

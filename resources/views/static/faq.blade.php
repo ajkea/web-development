@@ -15,13 +15,19 @@
                 </div>
             @endforeach
         </div>
-        @foreach($questions as $question)
-            <div id="question{{$question->id}}" class="row faq-answer">
-                <div class="col-mini">Q</div>
-                <div class="col-11">{{ $question->question }}</div>
-                <div class="col-mini">A</div>
-                <div class="col-11">{{ $question->answer }}</div>
-            </div>
-        @endforeach
+            <table class="table">
+                <tbody>
+                @foreach($questions as $question)
+                    <tr class="question-list--row">
+                        <th class="question-list--row__large" scope="row">Q</th>
+                        <th class="question-list--row__question" scope="row">{{ $question->question }}</th>
+                    </tr>
+                    <tr class="question-list--row">
+                        <td class="question-list--row__large">A</td>
+                        <td class="question-list--row__answer">{{ $question->answer }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
     </div>
 @endsection

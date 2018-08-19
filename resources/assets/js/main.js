@@ -1,6 +1,7 @@
 window.onload = function () {
     var time = document.getElementsByClassName('countdown');
 
+
     setInterval(function  () {countdown(time)}, 1000)
 
 }
@@ -24,7 +25,7 @@ window.countdown = function (time) {
             + minutes + "m " + seconds + "s ";
         }
         else {
-            time[i].innerHTML = "times up over now"
+            time[i].innerHTML = "Auction has ended"
         }
     }
 }

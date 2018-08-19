@@ -47,7 +47,7 @@
                         <li class="bold"><a href="search.html">ISEARCH</a></li>
                         <li class="bold"><a href="{{ route('myauctions') }}">MYAUCTIONS</a></li>
                         <li class="bold"><a href="{{ route('bids.index') }}">MYBIDS</a></li>
-                        <li class="bold"><a href="faq.html">CONTACT</a></li>
+                        <li class="bold"><a href="{{ route('faq') }}">CONTACT</a></li>
                     </ul>
                 </div>
                 <div class="float-right">

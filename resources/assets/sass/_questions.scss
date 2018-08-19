@@ -1,0 +1,29 @@
+.question-list--row {
+  font-family: $font-standard;
+  text-align: left;
+  line-height: 2rem;
+
+  th {
+    padding-top: 1rem;
+  }
+
+  td {
+    padding-bottom: 1rem;
+  }
+}
+
+.question-list--row__large {
+  font-size: 1.6rem;
+  //padding-top: 1rem;
+  padding-right: 1rem;
+}
+
+.question-list--row__answer {
+  font-size: .8rem;
+  color: #68686c;
+}
+
+.faq-question {
+  line-height: 1.8rem;
+  color: #0f1d62;
+}

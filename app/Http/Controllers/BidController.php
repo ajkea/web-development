@@ -22,10 +22,10 @@ class BidController extends Controller
     public function index()
     {
         $bids = $this->bid
-            ->select('*' , DB::raw("max(price)"))
-            ->orderBy('price', 'desc')
+            ->select('*' , DB::raw("max(price) as maxBid"))
             ->where('user_id', Auth::user()->id)
             ->groupBy('auction_id')
+            ->orderBy('price', 'desc')
             ->get();
 
 
