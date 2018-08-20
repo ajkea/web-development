@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Favourite;
 use Illuminate\Http\Request;
+use Auth;
 
 class FavouriteController extends Controller
 {
@@ -39,7 +40,15 @@ class FavouriteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        return $request;
+
+        $favourite = $this->favourite->create([
+            'user_id' =>  Auth::user()->id,
+            'auction_id' => $request->auction_id,
+            'favourited' => $request->favourite,
+        ]);
+
+        return back();
     }
 
     /**

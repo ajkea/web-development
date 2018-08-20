@@ -54,8 +54,6 @@ class BidController extends Controller
      */
     public function store(Request $request)
     {
-//        $validated = $request->validated();
-
         $bid = $this->bid->create([
             'user_id' =>  Auth::user()->id,
             'auction_id' => $request->auction_id,

@@ -2664,6 +2664,13 @@ h1 {
   text-align: center;
 }
 
+.breadcrumbs {
+  color: #68686c;
+  text-decoration: none;
+  margin-top: 1rem;
+  font-size: .8rem;
+}
+
 form {
   margin-left: 0;
   padding-left: 0;
@@ -2713,6 +2720,11 @@ form textarea {
 :-moz-placeholder {
   opacity: 1;
   color: #545454;
+}
+
+.button {
+  padding: .5rem;
+  line-height: 2rem;
 }
 
 .green-bar {
@@ -2798,6 +2810,53 @@ li a {
 .nav-footer .row {
   padding-top: 5px;
   margin-top: 0;
+}
+
+table {
+  width: 100%;
+  font-family: "Helvetica";
+  line-height: 1.8rem;
+  border: 2px solid black;
+  padding: 1rem;
+}
+
+table th {
+  text-align: left;
+  padding: 1rem;
+}
+
+table td,
+table th {
+  border-bottom: 1px solid black;
+}
+
+.question-list--row {
+  font-family: "Helvetica";
+  text-align: left;
+  line-height: 2rem;
+}
+
+.question-list--row th {
+  padding-top: 1rem;
+}
+
+.question-list--row td {
+  padding-bottom: 1rem;
+}
+
+.question-list--row__large {
+  font-size: 1.6rem;
+  padding-right: 1rem;
+}
+
+.question-list--row__answer {
+  font-size: .8rem;
+  color: #68686c;
+}
+
+.faq-question {
+  line-height: 1.8rem;
+  color: #0f1d62;
 }
 
 body {
@@ -2998,7 +3057,7 @@ img {
 }
 
 .auction-small img {
-  height: 250px;
+  max-height: 350px;
 }
 
 .auction-small p,

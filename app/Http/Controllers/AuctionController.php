@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Favourite;
 use Illuminate\Http\Request;
 
 use App\Auction;
@@ -13,10 +14,11 @@ use Auth;
 
 class AuctionController extends Controller
 {
-    public function __construct(Auction $auction, Media $media, Bid $bid){
+    public function __construct(Auction $auction, Media $media, Bid $bid, Favourite $favourite){
         $this->auction = $auction;
         $this->media = $media;
         $this->bid = $bid;
+        $this->favourite = $favourite;
     }
 
     /**
@@ -38,7 +40,14 @@ class AuctionController extends Controller
     {
         return view(
             'auctions.myauctions',
-            ['auctions' => $this->auction->where('user_id', Auth::user()->id)]
+            ['auctionsBusy' => $this->auction
+                ->where('user_id', Auth::user()->id)
+                ->whereDate('end_date', '>', date_add(now(), date_interval_create_from_date_string('-1 days')))
+                ->paginate(9),
+            'auctionsPast' => $this->auction
+                ->where('user_id', Auth::user()->id)
+                ->whereDate('end_date', '<', date_add(now(), date_interval_create_from_date_string('-1 days')))
+                ->paginate(9)]
         );
     }
 
@@ -94,7 +103,7 @@ class AuctionController extends Controller
         }
 
 
-        return back()->withInput();
+        return view('auctions.index')->withInput();
     }
 
     /**
@@ -115,12 +124,19 @@ class AuctionController extends Controller
         {
             $price = $auctionBids + 1;
         }
-//        return $price;
+
+        $favourite = $this->favourite
+            ->where('auction_id', $id)
+            ->where('user_id', auth::user()->id)
+            ->orderBy('created_at' , 'DESC')
+            ->first();
+
         return view(
             'auctions.show',
             ['auction' => $this->auction->find($id),
             'auctions' => $this->auction->inRandomOrder()->get(),
-            'price' => $price
+            'price' => $price,
+            'favourite' => $favourite,
             ]);
     }
 
@@ -221,5 +237,10 @@ class AuctionController extends Controller
             'static.search',
             ['auctions' => $auctions, 'search' => $search]
         );
+    }
+
+    public function buyNow(Request $request)
+    {
+
     }
 }
