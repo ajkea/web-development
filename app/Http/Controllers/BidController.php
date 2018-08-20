@@ -25,7 +25,7 @@ class BidController extends Controller
             ->select('*' , DB::raw("max(price) as maxBid"))
             ->where('user_id', Auth::user()->id)
             ->groupBy('auction_id')
-            ->orderBy('price', 'desc')
+            ->orderBy('created_at', 'desc')
             ->get();
 
 

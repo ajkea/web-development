@@ -1,4 +1,6 @@
 @extends ('layouts.app')
+
+@section('pageTitle', 'FAQ')
 @section('content')
     @include ('layouts.hero')
     <div class="container">

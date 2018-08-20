@@ -1,4 +1,5 @@
 @extends ('layouts.app')
+@section('pageTitle', 'Profile')
 @section('content')
     <div class="intro-image">
         <img src="{{ URL::to('/') }}/images/static/hero1.png" alt="hero picture 1">
