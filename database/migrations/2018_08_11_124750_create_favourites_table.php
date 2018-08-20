@@ -25,6 +25,8 @@ class CreateFavouritesTable extends Migration
                 ->references('id')
                 ->on('auctions')
                 ->onDelete('cascade');
+            $table->string('favourited')
+                ->nullable();
             $table->timestamps();
         });
     }

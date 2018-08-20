@@ -1,4 +1,5 @@
 @extends ('layouts.app')
+@section('pageTitle', $auction->name)
 @section('content')
     @include ('layouts.hero')
     <div class="container">
@@ -7,14 +8,32 @@
                 Home > Auctions > Salvador Dali > Dance of Time III
             </a>
             <p class="right">LOT ID: {{ $auction->id }}</p>
+            <p></p>
             </span>
         </div>
         <div class="row">
             <h1>{{ $auction->name }}</h1>
-            <p class="countdown">
-                25d 14u 44m (7 bids) <i class="fal fa-bars"></i>
+            <p class="countdown" data-time="{{ $auction->end_date }}">
+                @
+                <i class="fal fa-bars"></i>
             </p>
         </div>
+        @if($auction->user_id != auth()->user()->id)
+        <div class="row">
+            <p>Add to favourites: </p>
+            <form action="{{ url('/storefavourite') }}" method="post">
+                @csrf
+                <input hidden name="auction_id" value="{{ $auction->id }}">
+                @if($favourite->favourited == 'on')
+                    <input hidden name="favourite" value="">
+                    <button class="button" type="submit"><i class="fal fa-star"></i>Remove</button>
+                @else
+                    <input hidden name="favourite" value="on">
+                    <button class="button" type="submit"><i class="fal fa-star"></i>Add</button>
+                @endif
+            </form>
+        </div>
+        @endif
         <div class="row">
             <div class="col-9">
                 <div class="row">
@@ -39,8 +58,8 @@
                     <p class="det-descr">{{ $auction->year }}, {{ $auction->origin }}</p>
                 </div>
                 <div class="row det-row">
-                    <p class="countdown">countdown: {{ $auction->end_date }}</p>
-                    <p class="date-end">{{ $auction->end_date }}</p>
+                    <p class="countdown" data-time="{{ $auction->end_date }}">
+                    <p class="date-end">End date: {{ $auction->end_date }}</p>
                 </div>
                 <div class="row det-row">
                     <p class="bold">{{ $auction->description }}</p>
@@ -54,6 +73,7 @@
                         bids:
                         {{ count($auction->bids) }}
                     </p>
+                    @if($auction->user_id != auth()->user()->id)
                     <div class="det-bid">
                         <form class="form" action="{{ url('/createbid') }}" method="post">
                             @csrf
@@ -65,6 +85,7 @@
                     <a href="#">
                         <i class="fal fa-bars"></i> add to my watchlist
                     </a>
+                    @endif
                 </div>
             </div> <!-- col-3 right -->
         </div><!-- detail top -->

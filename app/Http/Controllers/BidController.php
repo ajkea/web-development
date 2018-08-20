@@ -25,7 +25,7 @@ class BidController extends Controller
             ->select('*' , DB::raw("max(price) as maxBid"))
             ->where('user_id', Auth::user()->id)
             ->groupBy('auction_id')
-            ->orderBy('price', 'desc')
+            ->orderBy('created_at', 'desc')
             ->get();
 
 
@@ -54,8 +54,6 @@ class BidController extends Controller
      */
     public function store(Request $request)
     {
-//        $validated = $request->validated();
-
         $bid = $this->bid->create([
             'user_id' =>  Auth::user()->id,
             'auction_id' => $request->auction_id,

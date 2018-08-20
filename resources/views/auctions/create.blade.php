@@ -1,6 +1,7 @@
 @extends ('layouts.app')
+@section('pageTitle', 'Add auction')
 @section('content')
-    @yield ('layouts.hero)
+    @yield ('layouts.hero')
     <div class="container">
         <a href="#" class="breadcrumbs">
             Home > Jasper Poppe > My auctions > New Auction
@@ -14,7 +15,7 @@
             @endif
         </div>
         <div class="row">
-            <form class="form" action="{{ route('auctions.index') }}" enctype="multipart/form-data" method="post" files="true">
+            <form class="form" action="/auctions" enctype="multipart/form-data" method="post" files="true">
                 @csrf
                 <div class="row">
                     <div class="col-6">
@@ -47,15 +48,15 @@
                 </div>
                 <div class="row">
                     <div class="col-3">
-                        <p class="title">Width</p>
+                        <p class="title">Width (in mm)</p>
                         <input required type="number" name="width" id="width" placeholder="X X X X" value="{{ old('width') }}">
                     </div>
                     <div class="col-3">
-                        <p class="title">Height</p>
+                        <p class="title">Height (in mm)</p>
                         <input required type="number" name="height" id="Height" placeholder="X X X X" value="{{ old('height') }}">
                     </div>
                     <div class="col-3">
-                        <div class="inline"><p class="title">Depth </p><p class="note">(optional)</p></div>
+                        <div class="inline"><p class="title">Depth (in mm)</p><p class="note">(optional)</p></div>
                         <input type="number" name="depth" id="Depth" placeholder="X X X X" value="{{ old('depth') }}">
                     </div>
                 </div>
@@ -109,7 +110,7 @@
                     </div>
                     <div class="col-3">
                         <div class="inline"><p class="title">Buyout price </p><p class="note">(optional)</p></div>
-                        <input type="text" name="buy_now" id="buyoutprice" value="{{ old('buy_now') }}" placeholder="X X X X">
+                        <input type="text" name="buy_now" id="buyoutprice" value="" placeholder="X X X X">
                     </div>
                 </div>
                 <div class="row">
@@ -132,7 +133,6 @@
                 <div class="row center">
                     <div class="col-3">
                         <button type="submit"class="button">ADD AUCTION</button>
-                        <a href="#">ASK A QUESTION ></a>
                     </div>
                 </div>
             </form>

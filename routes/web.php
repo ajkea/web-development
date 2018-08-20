@@ -33,6 +33,8 @@ Route::get('faq', 'QuestionController@index')
     ->name('faq');
 
 Route::resource('/auctions', 'AuctionController');
+Route::get('/auctions/create', 'AuctionController@create')
+    ->middleware('auth');
 Route::get('myauctions', 'AuctionController@myAuctions')
     ->name('myauctions')
     ->middleware('auth');
@@ -41,7 +43,7 @@ Route::resource('bids', 'BidController')
     ->middleware('auth');
 route::post('createbid', 'BidController@store')
     ->name('createbid)')
-    ->middleware('auth');#
+    ->middleware('auth');
 
 route::get('watchlist', 'AuctionController@watchlist')
     ->name('watchlist')
@@ -51,3 +53,9 @@ route::get('search', 'AuctionController@search')
     ->name('search');
 
 route::post('searchauction', 'AuctionController@searchAuction');
+
+route::post('storefavourite', 'FavouriteController@store')
+    ->middleware('auth');
+
+route::post('buynow', 'AuctionController@buyNow')
+    ->middleware('auth');
