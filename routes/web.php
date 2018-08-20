@@ -11,6 +11,43 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('register/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    return view('auth.register');
+});
+
+Route::get('profile', 'UserController@profile')
+    ->name('profile')
+    ->middleware('auth');
+
+Route::get('home', 'HomeController@index')
+    ->name('home');
+Route::get('faq', 'QuestionController@index')
+    ->name('faq');
+
+Route::resource('/auctions', 'AuctionController');
+Route::get('myauctions', 'AuctionController@myAuctions')
+    ->name('myauctions')
+    ->middleware('auth');
+
+Route::resource('bids', 'BidController')
+    ->middleware('auth');
+route::post('createbid', 'BidController@store')
+    ->name('createbid)')
+    ->middleware('auth');#
+
+route::get('watchlist', 'AuctionController@watchlist')
+    ->name('watchlist')
+    ->middleware('auth');
+
+route::get('search', 'AuctionController@search')
+    ->name('search');
+
+route::post('searchauction', 'AuctionController@searchAuction');

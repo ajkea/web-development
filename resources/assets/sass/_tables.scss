@@ -1,0 +1,15 @@
+table {
+  width: 100%;
+  font-family: $font-standard;
+  line-height: 1.8rem;
+  border: 2px solid black;
+  padding: 1rem;
+  th {
+    text-align: left;
+    padding: 1rem;
+
+  }
+    td, th{
+      border-bottom: 1px solid black;
+    }
+}
